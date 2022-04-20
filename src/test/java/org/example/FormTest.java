@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class FormTest {
 
-    private String Pic;
+ //   private String Pic;
 
     @BeforeAll
     static void setUp() {
@@ -54,7 +54,7 @@ public class FormTest {
         
        $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
         $(".table-responsive").shouldHave(text("Hulk Hogan"),text("hulk@hogan.com"),text("Male"),
-                text("1655783317"), text("11 Aug 1953"), text("Hulk-Hogan.jpg"),
+                text("1655783317"), text("11 August,1953"), text("Hulk-Hogan.jpg"),
                 text("Beverly Hills 90210"), text("Uttar Pradesh"), text("Agra"));
     }
 
