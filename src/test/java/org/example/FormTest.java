@@ -34,6 +34,7 @@ public class FormTest {
       open("/automation-practice-form");
 
 
+
         $("#firstName").setValue("Hulk");
         $("#lastName").setValue("Hogan");
         $("#userEmail").setValue("hulk@hogan.com");
