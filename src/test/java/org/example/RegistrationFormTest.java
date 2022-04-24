@@ -4,7 +4,11 @@ import com.codeborne.selenide.Configuration;
 import com.github.javafaker.Faker;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
+
 import static com.codeborne.selenide.Selenide.*;
+import static java.lang.String.format;
 
 public class RegistrationFormTest {
 
@@ -40,7 +44,9 @@ public class RegistrationFormTest {
         String selectCity = "Agra";
 
 
-       // String expectedFullName = format("%s %s", firstName, lastName);
+        String expectedFullName = format("%s %s", firstName, lastName);
+        String expectedDateOfBirth = format("%s %s,%s", day,month,year);
+        String expectedStateAndCity = format("%s %s", selectState, selectCity);
 
         registrationFormPage.openPage()
                 .setFirstName(firstName)
@@ -55,37 +61,18 @@ public class RegistrationFormTest {
                 .currentAddress(userAddress)
                 .selectState(selectState)
                 .selectCity(selectCity)
-                .submit();
-//                .checkResult();
+                .submit()
+                .checkResult("Student Name", expectedFullName)
+                .checkResult("Student Email", email)
+                .checkResult("Gender", genderWrapper[0])
+                .checkResult("Mobile", userNumber)
+                .checkResult("Date of Birth", expectedDateOfBirth)
+                .checkResult("Subjects", subject)
+                .checkResult("Hobbies", hobbies)
+                .checkResult("Picture", uploadPicture)
+                .checkResult("Address", userAddress)
+                .checkResult("State and City",expectedStateAndCity);
 
-
-    //    $("#firstName").setValue(firstName);
-    //    $("#lastName").setValue(lastName);
-    //    $("#userEmail").setValue(email);
-    //    $("#genterWrapper").$(byText(genderWrapper[0])).click();
-    //    $("#userNumber").setValue(userNumber);
-    //    $("#dateOfBirthInput").click();
-    //    $(".react-datepicker__month-select").selectOption("August");
-    //    $(".react-datepicker__year-select").selectOption("1953");
-    //    $(".react-datepicker__day--011:not(.react-datepicker__day--outside-month").click();
-    //    $("#subjectsInput").setValue("Arts").pressEnter();
-    //    $(byText("Sports")).click();
-    //    $("#uploadPicture").uploadFile(new File("src/test/resources/Hulk-Hogan.jpg"));
-    //    $("#currentAddress").setValue(userAddress);
-    //    $("#react-select-3-input").setValue("Uttar Pradesh").pressEnter();
-    //    $("#react-select-4-input").setValue("Agra").pressEnter();
-    //    $("#submit").click();
-
-//
-//       $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-//        $(".table-responsive").shouldHave(text(firstName + " " + lastName),
-//                text(email),
-//                text(genderWrapper[0]),
-//                text(userNumber),
-//                text("11 August,1953"),
-//                text("Hulk-Hogan.jpg"),
-//                text(userAddress),
-//                text("Uttar Pradesh"),
-//                text("Agra"));
     }
+
 }

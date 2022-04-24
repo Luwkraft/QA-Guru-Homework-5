@@ -19,9 +19,9 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
         // locators
         SelenideElement firstNameInput = $("#firstName");
-        SelenideElement lastNameInput = $("#setLastName");
-        SelenideElement userEmailInput = $("#setUserEmail");
-        SelenideElement subjectsInput = $("#setSubject");
+        SelenideElement lastNameInput = $("#lastName");
+        SelenideElement userEmailInput = $("#userEmail");
+        SelenideElement subjectsInput = $("#subjectsInput");
 
         //actions
         public RegistrationFormPage openPage() {
@@ -65,7 +65,7 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
             return this;
         }
         public RegistrationFormPage subjectsInput(String value) {
-            subjectsInput.setValue(value);
+            subjectsInput.setValue(value).pressEnter();
             return this;
         }
 
